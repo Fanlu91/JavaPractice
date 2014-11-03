@@ -1,4 +1,4 @@
-package com.fanlu.basic;
+package com.newthinktank.basic;
 
 import java.util.*;
 
