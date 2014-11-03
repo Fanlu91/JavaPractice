@@ -49,6 +49,7 @@ public class NumberRelated {
 	 * @param numRows
 	 * @return
 	 */
+
 	public List<List<Integer>> pascalTriangle(int numRows) {
 		List<List<Integer>> list = new ArrayList<List<Integer>>();
 		if(numRows==0){
