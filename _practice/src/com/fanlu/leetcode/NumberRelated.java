@@ -1,5 +1,6 @@
 package com.fanlu.leetcode;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,8 @@ public class NumberRelated {
 
 	/**
 	 * generate Pascal's Triangle.
-	 * 
+	 * using factorial tool and the formula(j and row number n;) of index. 
+	 * no a very good answer.
 	 * @param numRows
 	 * @return
 	 */
@@ -33,24 +35,65 @@ public class NumberRelated {
 		for (int i = 1; i <= numRows; i++) {
 			List<Integer> theList = new ArrayList<Integer>();
 			for (int j = 1; j <= i; j++) {
-				theList.add((int) (factorial(i - 1) / factorial(i - j) / factorial(j - 1)));
+				//the formula
+				BigInteger bi= (factorial(i - 1).divide(factorial(i - j)).divide(factorial(j - 1)));
+				theList.add(bi.intValue());
 			}
 			list.add(theList);
 		}
 		return list;
 	}
-
-	// factorial(1-20, 21 will cause overflow)
-	private long factorial(int n) {
+	/**
+	 * use iteration to get the result from the previous list.
+	 * ac solution
+	 * @param numRows
+	 * @return
+	 */
+	public List<List<Integer>> pascalTriangle(int numRows) {
+		List<List<Integer>> list = new ArrayList<List<Integer>>();
+		if(numRows==0){
+			return list;
+		}
+		List<Integer> element = new ArrayList<Integer>();
+		element.add(1);
+    	for(int i=0;i<numRows;i++){
+    		list.add(element);
+    		element=this.getNextRow(element);
+    	}
+		return list;
+	}
+	public List<Integer> getNextRow(List<Integer> previous){
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);
+		for (int i = 0; i < previous.size()-1; i++) {
+			list.add(previous.get(i)+previous.get(i+1));
+		}
+		list.add(1);
+		return list;
+	}
+	/**
+	 * factorial(if long is used, 21 will cause overflow)
+	 * @param n
+	 * @return
+	 */
+	private BigInteger factorial(int n) {	
 		if (n < 0)
-			return 0;
+			return new BigInteger(String.valueOf(0));
 		if (n == 0)
-			return 1;
+			return new BigInteger(String.valueOf(1));
 		else
-			return n * factorial(n - 1);
+			return factorial(n - 1).multiply(new BigInteger(String.valueOf(n)));
 	}
 
-	//factorial, using int array to store the result
+	/**
+	 * factorial, using int array to store the result(reverse order)
+	 * according to http://www.cnblogs.com/anderslly/archive/2008/05/19/factorial-algorithms.html
+	 * but there is a problem in his code(should fill the array with 1 first)
+	 * something more about factorial: how many 0 at the end of 100! ? (hint: Prime number. 2a¡Á5b¡Áp1a1...pnan, 
+	 * The number of 0 depends on how many 5 those numbers contains, answer is 24=20+4[25 50 75 100]) 
+	 * @param n
+	 * @return
+	 */
 	public int[] FactorialLargeNumber(int n) {
 		if (n < 0) {
 			throw new IllegalArgumentException("x must be>=0");
@@ -66,13 +109,16 @@ public class NumberRelated {
 		long carry = 0;
 		Arrays.fill(array, 1);
 		for (int i = 2; i <= n; i++) {
+			//do the Multiplication; 
+			//Multiplier will be the new 'n' and each digital of the result before
 			for (int j = 0; j < digits; j++) {
+//				System.out.println("carry value"+carry);			
 				long multipleResult = array[j] * i + carry;
 //				System.out.println(multipleResult);
 				array[j] = (int) (multipleResult % 10);
 				carry = multipleResult / 10;
-//				System.out.println("carry Îª"+carry);
 			}
+			//assign the digits after multi
 			while (carry !=0) {
 				array[digits++] = (int) (carry % 10);
 				carry /= 10;
@@ -82,11 +128,12 @@ public class NumberRelated {
 		result=Arrays.copyOf(array, digits);
 		return result;
 	}
-
+	
 	public static void main(String[] args) {
 		NumberRelated n = new NumberRelated();
-		System.out.println("here"+n.factorial(20));
-		System.out.println(Arrays.toString(n.FactorialLargeNumber(10000)));
+//		System.out.println("here"+n.factorial(25));
+//		System.out.println(Arrays.toString(n.FactorialLargeNumber(25)));
+		System.out.println(n.generate(21).size());
 	}
 
 }
