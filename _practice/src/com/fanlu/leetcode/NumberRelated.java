@@ -210,7 +210,11 @@ public class NumberRelated {
 		result = Arrays.copyOf(array, digits);
 		return result;
 	}
-
+	public String countAndSay(int n) {
+        String result ="";
+        
+        return result;
+    }
 	public static void main(String[] args) {
 		NumberRelated n = new NumberRelated();
 		// System.out.println("here"+n.factorial(25));
