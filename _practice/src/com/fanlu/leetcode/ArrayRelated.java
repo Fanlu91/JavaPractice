@@ -49,9 +49,12 @@ public class ArrayRelated {
 		}
 		return A.length - dupNum;
 	}
+
 	/**
-	 * Given a non-negative number represented as an array of digits, plus one to the number.
-	 * The digits are stored such that the most significant digit is at the head of the list.
+	 * Given a non-negative number represented as an array of digits, plus one
+	 * to the number. The digits are stored such that the most significant digit
+	 * is at the head of the list.
+	 * 
 	 * @param digits
 	 * @return
 	 */
@@ -80,9 +83,50 @@ public class ArrayRelated {
 		return digits;
 	}
 
+	/**
+	 * Given two sorted integer arrays A and B, merge B into A as one sorted
+	 * array. You may assume that A has enough space (size that is greater or
+	 * equal to m + n) to hold additional elements from B. The number of
+	 * elements initialized in A and B are m and n respectively.
+	 * 
+	 * key is move the array from the end of A.
+	 * @param A
+	 * @param m
+	 * @param B
+	 * @param n
+	 */
+	public void merge(int A[], int m, int B[], int n) {
+		while(m+n>0){
+			if(n<1){
+				return;
+			}
+			if(m<1){
+				A[m+n-1] = B[n-1];
+				n--;
+			}else{
+				if((A[m-1]>=B[n-1])){
+					A[m+n-1] = A[m-1];
+					m--;
+				}else{
+					A[m+n-1] = B[n-1];
+					n--;
+				}
+			}
+//			System.out.println(Arrays.toString(A));
+		}
+//		use exp1?exp2:exp3 to solve this.
+//		I must say this way is cool(and a little bit faster according to the performance) but much harder to debug.
+//        while(m+n>0 && n != 0){
+//            A[m+n -1] = (m<1 || A[m-1]<= B[n-1])?B[(n--) -1]:A[(m--) -1];
+//        }
+	}
+
 	public static void main(String[] args) {
 		ArrayRelated ar = new ArrayRelated();
-		System.out.println(ar.removeDuplicates(new int[] { 1, 2, 3, 3, 4, 4, 5,
-				5, 6, 6, 7, 7 }));
+		int A[] = new int[10];
+//		A[0] = 2;
+//		A[1] = 3;
+		ar.merge(A, 0, new int[]{1}, 1);
+		
 	}
 }
