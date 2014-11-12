@@ -2,6 +2,7 @@ package com.fanlu.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ArrayRelated {
@@ -18,7 +19,7 @@ public class ArrayRelated {
 			if (A[i] == elem)
 				A[i] = A[k--];
 			else
-				i++;// key here
+				i++;// here is the key thing
 		return k + 1;
 	}
 
@@ -95,6 +96,24 @@ public class ArrayRelated {
 	 * @param B
 	 * @param n
 	 */
+	    public int solution(int[] A) {
+	    	 int nonCycle = 0;
+	         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+	         int i =0;
+	         for(; i < A.length ;i++ ){
+	            if(!map.containsKey(A[i])){
+	         	   map.put(A[i], 1);
+	         	   nonCycle++;
+	            }else if(map.containsKey(A[i])){
+	         	   map.put(A[i], map.get(A[i])+1);
+	         	   if(map.get(A[i])==3){
+	         		   return i-nonCycle;
+	         	   }
+	            }
+	            System.out.println(nonCycle);
+	         }
+	         return i-nonCycle;
+	}
 	public void merge(int A[], int m, int B[], int n) {
 		while(m+n>0){
 			if(n<1){
@@ -126,7 +145,8 @@ public class ArrayRelated {
 		int A[] = new int[10];
 //		A[0] = 2;
 //		A[1] = 3;
-		ar.merge(A, 0, new int[]{1}, 1);
+//		ar.merge(A, 0, new int[]{1}, 1);
+		ar.solution(new int[]{2,3,1,1,3});
 		
 	}
 }
