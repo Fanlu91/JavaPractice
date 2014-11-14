@@ -19,7 +19,7 @@ public class TheStack {
 	private int stackSize;
 
 	// Sets stack as empty
-
+	// Last in first out
 	private int topOfStack = -1;
 
 	TheStack(int size) {
@@ -90,7 +90,7 @@ public class TheStack {
 		return stackArray[topOfStack];
 
 	}
-
+	
 	public void pushMany(String multipleValues) {
 
 		String[] tempString = multipleValues.split(" ");
