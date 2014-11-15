@@ -2,7 +2,18 @@ package com.newthinktank.basic;
 
 import java.util.Arrays;
 
+
 public class MergeSort {
+    public static void printArray(int[] array) {
+	    System.out.print("{");
+	    for (int i = 0; i < array.length; i++) {
+		    System.out.print(array[i]);
+		    if (i < array.length - 1) {
+			    System.out.print(", ");
+		    }
+	    }
+	    System.out.println("}");
+    }
 	public static void main(String a[]) {
 
 		int array[] = { 10, 8, 4, 80, 13, 1, 3, 11 };
@@ -101,7 +112,7 @@ public class MergeSort {
 
 					array[k + 1] = array[k];
 				}
-
+				printArray(array);
 				System.out.println(Temp + " is stored in index " + low);
 
 				printHorzArray(-1, -1, array, 49);

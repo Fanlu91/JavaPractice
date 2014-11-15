@@ -91,62 +91,68 @@ public class ArrayRelated {
 	 * elements initialized in A and B are m and n respectively.
 	 * 
 	 * key is move the array from the end of A.
+	 * 
 	 * @param A
 	 * @param m
 	 * @param B
 	 * @param n
 	 */
-	    public int solution(int[] A) {
-	    	 int nonCycle = 0;
-	         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-	         int i =0;
-	         for(; i < A.length ;i++ ){
-	            if(!map.containsKey(A[i])){
-	         	   map.put(A[i], 1);
-	         	   nonCycle++;
-	            }else if(map.containsKey(A[i])){
-	         	   map.put(A[i], map.get(A[i])+1);
-	         	   if(map.get(A[i])==3){
-	         		   return i-nonCycle;
-	         	   }
-	            }
-	            System.out.println(nonCycle);
-	         }
-	         return i-nonCycle;
-	}
 	public void merge(int A[], int m, int B[], int n) {
-		while(m+n>0){
-			if(n<1){
+		while (m + n > 0) {
+			if (n < 1) {
 				return;
 			}
-			if(m<1){
-				A[m+n-1] = B[n-1];
+			if (m < 1) {
+				A[m + n - 1] = B[n - 1];
 				n--;
-			}else{
-				if((A[m-1]>=B[n-1])){
-					A[m+n-1] = A[m-1];
+			} else {
+				if ((A[m - 1] >= B[n - 1])) {
+					A[m + n - 1] = A[m - 1];
 					m--;
-				}else{
-					A[m+n-1] = B[n-1];
+				} else {
+					A[m + n - 1] = B[n - 1];
 					n--;
 				}
 			}
-//			System.out.println(Arrays.toString(A));
+			// System.out.println(Arrays.toString(A));
 		}
-//		use exp1?exp2:exp3 to solve this.
-//		I must say this way is cool(and a little bit faster according to the performance) but much harder to debug.
-//        while(m+n>0 && n != 0){
-//            A[m+n -1] = (m<1 || A[m-1]<= B[n-1])?B[(n--) -1]:A[(m--) -1];
-//        }
+		// use exp1?exp2:exp3 to solve this.
+		// I must say this way is cool(and a little bit faster according to the
+		// performance) but much harder to debug.
+		// while(m+n>0 && n != 0){
+		// A[m+n -1] = (m<1 || A[m-1]<= B[n-1])?B[(n--) -1]:A[(m--) -1];
+		// }
 	}
-
+	/**
+	 * find the size of looped number in a integer array.
+	 * @param A
+	 * @return
+	 */
+	public int solution(int[] A) {
+		int nonCycle = 0;
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		int i = 0;
+		for (; i < A.length; i++) {
+			if (!map.containsKey(A[i])) {
+				map.put(A[i], 1);
+				nonCycle++;
+			} else if (map.containsKey(A[i])) {
+				map.put(A[i], map.get(A[i]) + 1);
+				if (map.get(A[i]) == 3) {
+					return i - nonCycle;
+				}
+			}
+			System.out.println(nonCycle);
+		}
+		return i - nonCycle;
+	}
 	public static void main(String[] args) {
 		ArrayRelated ar = new ArrayRelated();
 		int A[] = new int[10];
-//		A[0] = 2;
-//		A[1] = 3;
-//		ar.merge(A, 0, new int[]{1}, 1);
-		ar.solution(new int[]{2,3,1,1,3});
+		// A[0] = 2;
+		// A[1] = 3;
+		// ar.merge(A, 0, new int[]{1}, 1);
 		
+
 	}
 }
