@@ -324,7 +324,7 @@ public class ArrayStructures {
 
 		newArray.generateRandomArray();
 
-		newArray.printHorzArray(-1, -1);
+		//newArray.printHorzArray(-1, -1);
 
 		// newArray.linearSearchForValue(10);
 
@@ -336,7 +336,7 @@ public class ArrayStructures {
 
 		// newArray.selectionSort();
 
-		newArray.selectionSort();
+		newArray.insertionSort();
 
 	}
 

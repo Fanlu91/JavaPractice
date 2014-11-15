@@ -16,33 +16,25 @@ import java.util.Arrays;
  * 
  */
 public class MergeSort {
-
-	public static void printArray(int[] array) {
-		System.out.print("{");
-		for (int i = 0; i < array.length; i++) {
-			System.out.print(array[i]);
-			if (i < array.length - 1) {
-				System.out.print(", ");
-			}
-		}
-		System.out.println("}");
-	}
-
 	public void mergeSort(int l, int r, int[] array) {
 		if (l >= r)
 			return;
 		int mid = (l + r) / 2;
 		mergeSort(l, mid, array);
 		mergeSort(mid + 1, r, array);
-
-		int leftEnd = mid;
-		int rightStart = mid + 1;
-
-		int[] tempArray = Arrays.copyOfRange(array, rightStart, r + 1);
-
+		merge(l,r,array);
+	}
+	public void merge(int l, int r, int[] array){
+		
+		int mid = (l + r) / 2;
+		//copy the right array.
+		int[] tempArray = Arrays.copyOfRange(array, mid + 1, r + 1);//before r+1, index r+1 will not be included
+		//size of those arrays.
 		int rightSize = tempArray.length;
-		int leftSize = leftEnd - l+1;
-		System.out.println("l and r size:"+ leftSize+" "+rightSize);
+		int leftSize = mid - l+1;
+//		System.out.println("l and r size:"+ leftSize+" "+rightSize);
+		
+		//below merge two sorted arrays
 		while (rightSize + leftSize > 0) {			
 			if (rightSize < 1) {
 				return;
@@ -59,16 +51,25 @@ public class MergeSort {
 					rightSize--;
 				}
 			}
-			printArray(array);
+//			printArray(array);
 		}
 	}
-
+	
+	public static void printArray(int[] array) {
+		System.out.print("{");
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i]);
+			if (i < array.length - 1) {
+				System.out.print(", ");
+			}
+		}
+		System.out.println("}");
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MergeSort m = new MergeSort();
 		int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3 };
 		m.mergeSort(0, array.length - 1, array);
-		m.printArray(array);
 	}
 
 }
