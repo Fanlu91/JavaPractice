@@ -1,6 +1,6 @@
 package com.newthinktank.basic;
 /**
- * write by myself.
+ * Written by myself.
  * @author Administrator
  *
  */
@@ -103,8 +103,7 @@ public class BinaryTree {
 			}else{
 				theParent.leftChild = null;
 			}
-			
-			
+				
 			//place the replacement node to the place			
 			if (isLeft)
 				parent.leftChild = focusNode;
@@ -177,10 +176,9 @@ public class BinaryTree {
 		 * 2****4**6***8
 		 */
 		bTree.preorderTraverseTree(bTree.root);
-		bTree.removeNode(5);
-//		bTree.inOrderTraverseTree(bTree.root);
-		bTree.preorderTraverseTree(bTree.root);
-//		bTree.postorderTraverseTree(bTree.root);
+//		bTree.removeNode(5);
+		bTree.inOrderTraverseTree(bTree.root);
+		bTree.postorderTraverseTree(bTree.root);
 //		System.out.println("find key 1: " + bTree.findNode(1));
 	}
 

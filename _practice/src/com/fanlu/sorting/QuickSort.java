@@ -91,8 +91,8 @@ public class QuickSort {
 	                }
 	                swap(array, start, k);          // after the indices have crossed, swap the last element in
 	                                                // the left partition with the pivot 
-	                quickSort(array, start, k - 1); // quicksort the left partition
-	                quickSort(array, k + 1, end);   // quicksort the right partition
+	                quickSort2(array, start, k - 1); // quicksort the left partition
+	                quickSort2(array, k + 1, end);   // quicksort the right partition
 	        }
 	        else    // if there is only one element in the partition, do not do any sorting
 	        {

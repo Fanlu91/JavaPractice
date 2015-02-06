@@ -15,27 +15,33 @@ import java.util.Arrays;
  * @author Administrator
  * 
  */
-public class MergeSort {
+public class MergeSort{ 
 	public void mergeSort(int l, int r, int[] array) {
 		if (l >= r)
 			return;
 		int mid = (l + r) / 2;
 		mergeSort(l, mid, array);
 		mergeSort(mid + 1, r, array);
-		merge(l,r,array);
+		merge(l, r, array);
 	}
-	public void merge(int l, int r, int[] array){
-		
+
+	public void merge(int l, int r, int[] array) {
+
 		int mid = (l + r) / 2;
-		//copy the right array.
-		int[] tempArray = Arrays.copyOfRange(array, mid + 1, r + 1);//before r+1, index r+1 will not be included
-		//size of those arrays.
+		// copy the right array.
+		int[] tempArray = Arrays.copyOfRange(array, mid + 1, r + 1);// before
+																	// r+1,
+																	// index r+1
+																	// will not
+																	// be
+																	// included
+		// size of those arrays.
 		int rightSize = tempArray.length;
-		int leftSize = mid - l+1;
-//		System.out.println("l and r size:"+ leftSize+" "+rightSize);
-		
-		//below merge two sorted arrays
-		while (rightSize + leftSize > 0) {			
+		int leftSize = mid - l + 1;
+		// System.out.println("l and r size:"+ leftSize+" "+rightSize);
+
+		// below merge two sorted arrays
+		while (rightSize + leftSize > 0) {
 			if (rightSize < 1) {
 				return;
 			}
@@ -44,17 +50,18 @@ public class MergeSort {
 				rightSize--;
 			} else {
 				if (array[l + leftSize - 1] >= tempArray[rightSize - 1]) {
-					array[l + leftSize + rightSize-1] = array[l + leftSize - 1];
+					array[l + leftSize + rightSize - 1] = array[l + leftSize
+							- 1];
 					leftSize--;
 				} else {
-					array[l + leftSize + rightSize-1] = array[rightSize - 1];
+					array[l + leftSize + rightSize - 1] = array[rightSize - 1];
 					rightSize--;
 				}
 			}
-//			printArray(array);
+			// printArray(array);
 		}
 	}
-	
+
 	public static void printArray(int[] array) {
 		System.out.print("{");
 		for (int i = 0; i < array.length; i++) {
@@ -65,6 +72,7 @@ public class MergeSort {
 		}
 		System.out.println("}");
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MergeSort m = new MergeSort();

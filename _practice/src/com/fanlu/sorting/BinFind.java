@@ -11,7 +11,6 @@ public class BinFind {
 		BinaryFind bf=new BinaryFind();
 		bf.find(0, arr.length-1, 0, arr);
 	}
-
 }
 
 class BinaryFind{

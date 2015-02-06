@@ -11,6 +11,7 @@ public class NumberRelated {
 		String str = "" + x;
 		int result = 0;
 		String value = str;
+
 		if (str.contains("+") || str.contains("-")) {
 			value = str.substring(1);
 		}
@@ -22,6 +23,7 @@ public class NumberRelated {
 		}
 		return result;
 	}
+	
     /**
      * check whether an integer is palindrome
      * @param x
@@ -29,6 +31,7 @@ public class NumberRelated {
      */
 	public boolean isPalindrome(int x) {
         char[] chars=Integer.toString(x).toCharArray();
+        
 		for (int i = 0; i < chars.length; i++) {
 			if(chars[i]!=chars[chars.length-1-i]){
 				return false;
@@ -119,7 +122,6 @@ public class NumberRelated {
 		for (int i = 0; i < previous.size() - 1; i++) {
 			list.add(previous.get(i) + previous.get(i + 1));
 		}
-		list.add(1);
 		return list;
 	}
 
@@ -141,10 +143,9 @@ public class NumberRelated {
 				int right = list.get(i);
 				list.set(i, left+right);
 				left= right;
-//				System.out.println(Arrays.toString(list.toArray()));
-
 			}
 			list.add(1);
+			System.out.println(Arrays.toString(list.toArray()));
 		}
 		return list;
 	}
@@ -168,7 +169,7 @@ public class NumberRelated {
 	 * factorial, using int array to store the result(reverse order) according
 	 * to http://www.cnblogs.com/anderslly/archive/2008/05/19/factorial-
 	 * algorithms.html but there is a problem in his code(should fill the array
-	 * with 1 first) something more about factorial: how many 0 at the end of
+	 * with 1 first) something more about factorial: how many 0s at the end of
 	 * 100! ? (hint: Prime number. 2a¡Á5b¡Áp1a1...pnan, The number of 0 depends on
 	 * how many 5 those numbers contains, answer is 24=20+4[25 50 75 100])
 	 * 
@@ -212,14 +213,14 @@ public class NumberRelated {
 	}
 	public String countAndSay(int n) {
         String result ="";
-        
         return result;
     }
 	public static void main(String[] args) {
 		NumberRelated n = new NumberRelated();
 		// System.out.println("here"+n.factorial(25));
 		// System.out.println(Arrays.toString(n.FactorialLargeNumber(25)));
-		System.out.println(n.isPalindrome(""));
+//		System.out.println(n.isPalindrome(""));
+		n.getRow(5);
 	}
 
 }
