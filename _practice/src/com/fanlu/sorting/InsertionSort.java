@@ -1,109 +1,112 @@
 package com.fanlu.sorting;
 
 /***
- * ²åÈëÅÅĞò·¨
- * 
- * ²åÈëÅÅĞò·¨ÊôÓÚÄÚ²¿ÅÅĞò·¨, ÊÇ¶ÔÓÚÓûÅÅĞòµÄÔªËØÒÔ²åÈëµÄ·½Ê½ÕÒÑ°¸ÃÔªËØµÄÊÊÓ¦Î»ÖÃ, ÒÔ´ïµ½ÅÅĞòµÄÄ¿µÄ¡£
- * 
- * ²åÈëÅÅĞòÓÖ·Ö3ÖÖ 1²åÈëÅÅĞò·¨£¨Insert sort£© 2Ğ»¶ûÅÅĞò·¨ £¨shell sort£© 3¶ş²æÊ÷ÅÅĞò·¨£¨Binary-tree sort£©
- * 
- * »ù±¾Ë¼Ïë£º°Ñn¸ö´ıÅÅĞòµÄÔªËØ¿´³ÉÒ»¸öÓĞĞò±íºÍÎŞĞò±í ¿ªÊ¼Ê±ÓĞĞò±íÖ»°üº¬Ò»¸öÔªËØ£¬ÎŞĞò±í°üº¬n-1¸öÔªËØ ÅÅĞò¹ı³ÌÖĞÃ¿´Î´ÓÎŞĞò±íÖĞÈ¡³öµÚÒ»¸öÔªËØ£¬
- * °ÑËüµÄÅÅĞòÂëÒÀ´ÎÓëÓĞĞò±íµÄÅÅĞòÔªËØ½øĞĞ±È½Ï£¬ Ëü²åÈëµ½ÓĞĞò±íÖĞµÄÊÊµ±Î»ÖÃ£¬Ê¹Ö®³ÉÎªĞÂµÄÓĞĞò±í
+ * æ’å…¥æ’åºæ³•
+ *æ’å…¥æ’åºæ³•å±äºå†…éƒ¨æ’åºæ³•, æ˜¯å¯¹äºæ¬²æ’åºçš„å…ƒç´ ä»¥æ’å…¥çš„æ–¹å¼æ‰¾å¯»è¯¥å…ƒç´ çš„é€‚åº”ä½ç½®, ä»¥è¾¾åˆ°æ’åºçš„ç›®çš„ã€‚
+ *
+ * æ’å…¥æ’åºåˆåˆ†3ç§
+ * 1æ’å…¥æ’åºæ³•ï¼ˆInsert sortï¼‰
+ * 2è°¢å°”æ’åºæ³• ï¼ˆshell sortï¼‰
+ * 3äºŒå‰æ ‘æ’åºæ³•ï¼ˆBinary-tree sortï¼‰
+ *
+ * åŸºæœ¬æ€æƒ³ï¼šæŠŠnä¸ªå¾…æ’åºçš„å…ƒç´ çœ‹æˆä¸€ä¸ªæœ‰åºè¡¨å’Œæ— åºè¡¨ å¼€å§‹æ—¶æœ‰åºè¡¨åªåŒ…å«ä¸€ä¸ªå…ƒç´ ï¼Œæ— åºè¡¨åŒ…å«n-1ä¸ªå…ƒç´  æ’åºè¿‡ç¨‹ä¸­æ¯æ¬¡ä»æ— åºè¡¨ä¸­å–å‡ºç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œ
+ * æŠŠå®ƒçš„æ’åºç ä¾æ¬¡ä¸æœ‰åºè¡¨çš„æ’åºå…ƒç´ è¿›è¡Œæ¯”è¾ƒï¼Œ å®ƒæ’å…¥åˆ°æœ‰åºè¡¨ä¸­çš„é€‚å½“ä½ç½®ï¼Œä½¿ä¹‹æˆä¸ºæ–°çš„æœ‰åºè¡¨
  */
 
 public class InsertionSort {
-	public static void printArray(int[] array) {
-		System.out.print("{");
-		for (int i = 0; i < array.length; i++) {
-			System.out.print(array[i]);
-			if (i < array.length - 1) {
-				System.out.print(", ");
-			}
-		}
-		System.out.println("}");
-	}
+    public static void printArray(int[] array) {
+        System.out.print("{");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("}");
+    }
 
-	public void Insertsort(int[] arr) {
-		for (int i = 1; i < arr.length; i++) {
-			int insertVal = arr[i];
-			// insertVal×¼±¸ºÍÇ°Ò»¸öÊı±È½Ï
-			int index = i - 1;
+    public void Insertsort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int insertVal = arr[i];
+            // insertValå‡†å¤‡å’Œå‰ä¸€ä¸ªæ•°æ¯”è¾ƒ
+            int index = i - 1;
 
-			// move all the element ahead which is bigger than the insertVal
-			while (index >= 0 && insertVal < arr[index]) {
-				// °Ñarr[index]ÏòºóÒÆ¶¯
-				arr[index + 1] = arr[index];
-				// ÈÃindexÏòÇ°ÒÆ¶¯
-				index--;
-			}
-			// ½«insertVal²åÈëÊÊµ±Î»ÖÃ
-			// then put insertVal to the right place.
-			arr[index + 1] = insertVal;
-		}
-	}
+            // move all the element ahead which is bigger than the insertVal
+            while (index >= 0 && insertVal < arr[index]) {
+                // æŠŠarr[index]å‘åç§»åŠ¨
+                arr[index + 1] = arr[index];
+                // è®©indexå‘å‰ç§»åŠ¨
+                index--;
+            }
+            // å°†insertValæ’å…¥é€‚å½“ä½ç½®
+            // then put insertVal to the right place.
+            arr[index + 1] = insertVal;
+        }
+    }
 
-	/**
-	 * The shell sort partially sorts the array by sorting elements that are a
-	 * certain number of spaces apart called the interval or gap
-	 * 
-	 * @param array
-	 */
-	public void ShellSort(int[] array) {
-		// set size/2 as the gap
+    /**
+     * The shell sort partially sorts the array by sorting elements that are a
+     * certain number of spaces apart called the interval or gap
+     *
+     * @param array hh
+     */
+    public void ShellSort(int[] array) {
+        // set size/2 as the gap
 
-		for (int gap = array.length / 2; gap > 1; gap /= 2) {
-			System.out.println(gap);
-			for (int i = 0; i < array.length-gap; i++) {
-				if(array[i]>array[i+gap]){
-					int temp = array[i];
-					array[i] = array[i+gap];
-					array[i+gap] = temp;
-				}
-			}
-		}
-		for(int i=1;i<array.length;i++){
-			int index = i - 1;
-			int insertVal = array[i];
-			while(index >= 0&&insertVal<array[index]){
-				array[index+1]=array[index];
-				index--;
-			}
-			array[index+1]=insertVal;
-		}
-		
-	}
+        for (int gap = array.length / 2; gap > 1; gap /= 2) {
+            System.out.println(gap);
+            for (int i = 0; i < array.length - gap; i++) {
+                if (array[i] > array[i + gap]) {
+                    int temp = array[i];
+                    array[i] = array[i + gap];
+                    array[i + gap] = temp;
+                }
+            }
+        }
+        for (int i = 1; i < array.length; i++) {
+            int index = i - 1;
+            int insertVal = array[i];
+            while (index >= 0 && insertVal < array[index]) {
+                array[index + 1] = array[index];
+                index--;
+            }
+            array[index + 1] = insertVal;
+        }
 
-	public static void shellSort1(int[] a, int n) {
+    }
 
-		// gapÎª²½³¤£¬Ã¿´Î¼õÎªÔ­À´µÄÒ»°ë¡£
-		for (int gap = n / 2; gap > 0; gap /= 2) {
+    public static void shellSort1(int[] a, int n) {
 
-			// ¹²gap¸ö×é£¬¶ÔÃ¿Ò»×é¶¼Ö´ĞĞÖ±½Ó²åÈëÅÅĞò
-			for (int i = 0; i < gap; i++) {
+        // gapä¸ºæ­¥é•¿ï¼Œæ¯æ¬¡å‡ä¸ºåŸæ¥çš„ä¸€åŠã€‚
+        for (int gap = n / 2; gap > 0; gap /= 2) {
 
-				for (int j = i + gap; j < n; j += gap) {
+            // å…±gapä¸ªç»„ï¼Œå¯¹æ¯ä¸€ç»„éƒ½æ‰§è¡Œç›´æ¥æ’å…¥æ’åº
+            for (int i = 0; i < gap; i++) {
 
-					// Èç¹ûa[j] < a[j-gap]£¬ÔòÑ°ÕÒa[j]Î»ÖÃ£¬²¢½«ºóÃæÊı¾İµÄÎ»ÖÃ¶¼ºóÒÆ¡£
-					if (a[j] < a[j - gap]) {
+                for (int j = i + gap; j < n; j += gap) {
 
-						int tmp = a[j];
-						int k = j - gap;
-						while (k >= 0 && a[k] > tmp) {
-							a[k + gap] = a[k];
-							k -= gap;
-							printArray(a);
-						}
-						a[k + gap] = tmp;
-					}
-				}
-			}
-		}
-	}
+                    // å¦‚æœa[j] < a[j-gap]ï¼Œåˆ™å¯»æ‰¾a[j]ä½ç½®ï¼Œå¹¶å°†åé¢æ•°æ®çš„ä½ç½®éƒ½åç§»ã€‚
+                    if (a[j] < a[j - gap]) {
 
-	public static void main(String[] args) {
-		int[] array = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3 };
-		InsertionSort is = new InsertionSort();
-		is.ShellSort(array);
-		
-	}
+                        int tmp = a[j];
+                        int k = j - gap;
+                        while (k >= 0 && a[k] > tmp) {
+                            a[k + gap] = a[k];
+                            k -= gap;
+                            printArray(a);
+                        }
+                        a[k + gap] = tmp;
+                    }
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3};
+        InsertionSort is = new InsertionSort();
+        is.ShellSort(array);
+
+    }
 }
+

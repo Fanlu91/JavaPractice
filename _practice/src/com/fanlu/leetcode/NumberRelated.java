@@ -23,51 +23,51 @@ public class NumberRelated {
 		}
 		return result;
 	}
-	
-    /**
-     * check whether an integer is palindrome
-     * @param x
-     * @return
-     */
+
+	/**
+	 * check whether an integer is palindrome
+	 * @param x
+	 * @return
+	 */
 	public boolean isPalindrome(int x) {
-        char[] chars=Integer.toString(x).toCharArray();
-        
+		char[] chars=Integer.toString(x).toCharArray();
+
 		for (int i = 0; i < chars.length; i++) {
 			if(chars[i]!=chars[chars.length-1-i]){
 				return false;
 			}
 		}
 		return true;
-    }
+	}
 	/**
-     * check whether an string input is palindrome
-     * @param x
-     * @return
-     */
+	 * check whether an string input is palindrome
+	 * @param s a
+	 * @return
+	 */
 	public boolean isPalindrome(String s) {
-        if(null==s)
-            return true;
-        char[] letters= s.trim().toLowerCase().toCharArray();
-        int l=0;
-        int r= letters.length-1;
-        while(l<r){
-        	if(isValidLetter(letters[l])){
-        		if(isValidLetter(letters[r])){
-        			if(letters[l]!=letters[r])
-        				return false;
-        			else{
-        				l++;
-        				r--;
-        			}        				
-        		}else{
-        			r--;
-        		}
-        	}else{
-        		l++;
-        	}
-        }        
-        return true;
-    }
+		if(null==s)
+			return true;
+		char[] letters= s.trim().toLowerCase().toCharArray();
+		int l=0;
+		int r= letters.length-1;
+		while(l<r){
+			if(isValidLetter(letters[l])){
+				if(isValidLetter(letters[r])){
+					if(letters[l]!=letters[r])
+						return false;
+					else{
+						l++;
+						r--;
+					}
+				}else{
+					r--;
+				}
+			}else{
+				l++;
+			}
+		}
+		return true;
+	}
 	public boolean isValidLetter(char c){
 		if((c>='a'&&c<='z')||(c>='0'&&c<='9'))
 			return true;
@@ -77,7 +77,7 @@ public class NumberRelated {
 	/**
 	 * generate Pascal's Triangle. using factorial tool and the formula(j and
 	 * row number n;) of index. no a very good answer.
-	 * 
+	 *
 	 * @param numRows
 	 * @return
 	 */
@@ -98,7 +98,7 @@ public class NumberRelated {
 
 	/**
 	 * use iteration to get the result from the previous list. ac solution
-	 * 
+	 *
 	 * @param numRows
 	 * @return
 	 */
@@ -128,7 +128,7 @@ public class NumberRelated {
 	/**
 	 * Given an index k, return the kth row of the Pascal's triangle. use only
 	 * O(k) extra space
-	 * 
+	 *
 	 */
 	public List<Integer> getRow(int rowIndex) {
 		List<Integer> list = new ArrayList<Integer>();
@@ -152,7 +152,7 @@ public class NumberRelated {
 
 	/**
 	 * factorial(if long is used, 21 will cause overflow)
-	 * 
+	 *
 	 * @param n
 	 * @return
 	 */
@@ -170,9 +170,9 @@ public class NumberRelated {
 	 * to http://www.cnblogs.com/anderslly/archive/2008/05/19/factorial-
 	 * algorithms.html but there is a problem in his code(should fill the array
 	 * with 1 first) something more about factorial: how many 0s at the end of
-	 * 100! ? (hint: Prime number. 2a°¡5b°¡p1a1...pnan, The number of 0 depends on
+	 * 100! ? (hint: Prime number. 2a√ó5b√óp1a1...pnan, The number of 0 depends on
 	 * how many 5 those numbers contains, answer is 24=20+4[25 50 75 100])
-	 * 
+	 *
 	 * @param n
 	 * @return
 	 */
@@ -212,9 +212,9 @@ public class NumberRelated {
 		return result;
 	}
 	public String countAndSay(int n) {
-        String result ="";
-        return result;
-    }
+		String result ="";
+		return result;
+	}
 	public static void main(String[] args) {
 		NumberRelated n = new NumberRelated();
 		// System.out.println("here"+n.factorial(25));

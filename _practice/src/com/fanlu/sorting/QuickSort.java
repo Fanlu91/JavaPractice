@@ -1,116 +1,113 @@
 package com.fanlu.sorting;
 
 /**
- * ½»»»Ê½ÅÅĞò·¨-¿ìËÙÅÅĞò·¨ ¿ìËÙÅÅĞò£¨Quicksort£©ÊÇ¶ÔÃ°ÅİÅÅĞòµÄÒ»ÖÖ¸Ä½ø
- * 
- * »ù±¾Ë¼Ïë£º µİ¹é Í¨¹ıÒ»ÌËÅÅĞò½«ÒªÅÅĞòµÄÊı¾İ·Ö¸î³É¶ÀÁ¢µÄÁ½²¿·Ö ÆäÖĞÒ»²¿·Ö±ÈÁíÒ»²¿·ÖËÑÓĞÊı¾İ¶¼ÒªĞ¡£¬ È»ºóÔÙ°´´Ë·½·¨¶ÔÁ½²¿·ÖÊı¾İ·Ö±ğ½øĞĞ¿ìËÙÅÅĞò
- * Õû¸öÅÅĞò¹ı³Ì¿ÉÒÔµİ¹é½øĞĞ£¬×îÖÕÊ¹Õû¸öÊı¾İ±ä³ÉÓĞĞò
+ * äº¤æ¢å¼æ’åºæ³•-å¿«é€Ÿæ’åºæ³• å¿«é€Ÿæ’åºï¼ˆQuicksortï¼‰æ˜¯å¯¹å†’æ³¡æ’åºçš„ä¸€ç§æ”¹è¿›
+ * åŸºæœ¬æ€æƒ³ï¼š é€’å½’ é€šè¿‡ä¸€è¶Ÿæ’åºå°†è¦æ’åºçš„æ•°æ®åˆ†å‰²æˆç‹¬ç«‹çš„ä¸¤éƒ¨åˆ†
+ * å…¶ä¸­ä¸€éƒ¨åˆ†æ¯”å¦ä¸€éƒ¨åˆ†æœæœ‰æ•°æ®éƒ½è¦å°ï¼Œ ç„¶åå†æŒ‰æ­¤æ–¹æ³•å¯¹ä¸¤éƒ¨åˆ†æ•°æ®åˆ†åˆ«è¿›è¡Œå¿«é€Ÿæ’åº
+ * æ•´ä¸ªæ’åºè¿‡ç¨‹å¯ä»¥é€’å½’è¿›è¡Œï¼Œæœ€ç»ˆä½¿æ•´ä¸ªæ•°æ®å˜æˆæœ‰åº
  */
 
 public class QuickSort {
-	// ×î×ó±ß ×îÓÒ±ß Êı×é ´«µİ½øÈ¥
-	public void sort(int left, int right, int[] array) {
-		int l = left;
-		int r = right;
-		// ÖĞ¼ä±äÁ¿
-		int pivot = array[(left + right) / 2];
-		int temp = 0;
+    // æœ€å·¦è¾¹ æœ€å³è¾¹ æ•°ç»„ ä¼ é€’è¿›å»
+    public void sort(int left, int right, int[] array) {
+        int l = left;
+        int r = right;
+        // ä¸­é—´å˜é‡
+        int pivot = array[(left + right) / 2];
+        int temp = 0;
 
-		// ·Ö±ğ´Ó×î×ó×îÓÒÈ¡ÊıÓëµÚÒ»´ÎÈ¡µÄÖĞ¼ä±äÁ¿pivot½øĞĞ´óĞ¡±È½Ï£¬
-		// Ã¿´ÎÑ°ÕÒÒ»¸öÔÚp×ó±ßµ«´óÓÚpµÄÊı ÓëpÓÒ±ßĞ¡ÓÚpµÄÊı½øĞĞ½»»»
-		// ¾­¹ıÈô¸É´Î½»»»£¬×îÖÕÊ¹p×ó±ßµÄÊı¶¼Ğ¡ÓÚp£¬pÓÒ±ßµÄÊı¶¼´óÓÚp
-		while (l < r) {
-			while (array[l] < pivot)
-				l++;
-			while (array[r] > pivot)
-				r--;
-			if (l >= r)
-				break;
-			temp = array[l];
-			array[l] = array[r];
-			array[r] = temp;
+        // åˆ†åˆ«ä»æœ€å·¦æœ€å³å–æ•°ä¸ç¬¬ä¸€æ¬¡å–çš„ä¸­é—´å˜é‡pivotè¿›è¡Œå¤§å°æ¯”è¾ƒï¼Œ
+        // æ¯æ¬¡å¯»æ‰¾ä¸€ä¸ªåœ¨på·¦è¾¹ä½†å¤§äºpçš„æ•° ä¸på³è¾¹å°äºpçš„æ•°è¿›è¡Œäº¤æ¢
+        // ç»è¿‡è‹¥å¹²æ¬¡äº¤æ¢ï¼Œæœ€ç»ˆä½¿på·¦è¾¹çš„æ•°éƒ½å°äºpï¼Œpå³è¾¹çš„æ•°éƒ½å¤§äºp
+        while (l < r) {
+            while (array[l] < pivot)
+                l++;
+            while (array[r] > pivot)
+                r--;
+            if (l >= r)
+                break;
+            temp = array[l];
+            array[l] = array[r];
+            array[r] = temp;
 
-			if (array[l] == pivot)
-				--r;
-			if (array[r] == pivot)
-				++l;
-		}
-		if (l == r) {
-			l++;
-			r--;
-		}
-		// µİ¹éµÄË¼Ïë£¬¶Ô×ó±ßÓÒ±ßµÄÁ½¸ö×é·Ö±ğ½øĞĞ´ËÖÖsort
-		// ÒÔ´ËÀàÍÆ£¬×îÖÕÈ«²¿ÅÅÁĞÕıÈ·
-		if (left < r)
-			sort(left, r, array);
-		if (right < l)
-			sort(l, right, array);
-	}
-	
-	public static void quickSort(int[] a, int l, int r) {
+            if (array[l] == pivot)
+                --r;
+            if (array[r] == pivot)
+                ++l;
+        }
+        if (l == r) {
+            l++;
+            r--;
+        }
+        // é€’å½’çš„æ€æƒ³ï¼Œå¯¹å·¦è¾¹å³è¾¹çš„ä¸¤ä¸ªç»„åˆ†åˆ«è¿›è¡Œæ­¤ç§sort
+        // ä»¥æ­¤ç±»æ¨ï¼Œæœ€ç»ˆå…¨éƒ¨æ’åˆ—æ­£ç¡®
+        if (left < r)
+            sort(left, r, array);
+        if (right < l)
+            sort(l, right, array);
+    }
+
+    public static void quickSort(int[] a, int l, int r) {
 
         if (l < r) {
-            int i,j,x;
+            int i, j, x;
 
             i = l;//start from left
             j = r;//start from right
             x = a[i];
             while (i < j) {
-                while(i < j && a[j] > x)
-                    j--; // ´ÓÓÒÏò×óÕÒµÚÒ»¸öĞ¡ÓÚxµÄÊı
-                if(i < j)
+                while (i < j && a[j] > x)
+                    j--; // ä»å³å‘å·¦æ‰¾ç¬¬ä¸€ä¸ªå°äºxçš„æ•°
+                if (i < j)
                     a[i++] = a[j];
-                while(i < j && a[i] < x) 
-                    i++; // ´Ó×óÏòÓÒÕÒµÚÒ»¸ö´óÓÚxµÄÊı
-                if(i < j)
+                while (i < j && a[i] < x)
+                    i++; // ä»å·¦å‘å³æ‰¾ç¬¬ä¸€ä¸ªå¤§äºxçš„æ•°
+                if (i < j)
                     a[j--] = a[i];
             }
             a[i] = x;
-            quickSort(a, l, i-1); /* µİ¹éµ÷ÓÃ */
-            quickSort(a, i+1, r); /* µİ¹éµ÷ÓÃ */
+            quickSort(a, l, i - 1); /* é€’å½’è°ƒç”¨ */
+            quickSort(a, i + 1, r); /* é€’å½’è°ƒç”¨ */
         }
     }
-	
-	public void quickSort2(int array[], int start, int end)
-	{
-	        int i = start;                          // index of left-to-right scan
-	        int k = end;                            // index of right-to-left scan
 
-	        if (end - start >= 1)                   // check that there are at least two elements to sort
-	        {
-	                int pivot = array[start];       // set the pivot as the first element in the partition
+    public void quickSort2(int array[], int start, int end) {
+        int i = start;                          // index of left-to-right scan
+        int k = end;                            // index of right-to-left scan
 
-	                while (k > i)                   // while the scan indices from left and right have not met,
-	                {
-	                        while (array[i] <= pivot && i <= end && k > i)  // from the left, look for the first
-	                                i++;                                    // element greater than the pivot
-	                        while (array[k] > pivot && k >= start && k >= i) // from the right, look for the first
-	                            k--;                                        // element not greater than the pivot
-	                        if (k > i)                                       // if the left seekindex is still smaller than
-	                                swap(array, i, k);                      // the right index, swap the corresponding elements
-	                }
-	                swap(array, start, k);          // after the indices have crossed, swap the last element in
-	                                                // the left partition with the pivot 
-	                quickSort2(array, start, k - 1); // quicksort the left partition
-	                quickSort2(array, k + 1, end);   // quicksort the right partition
-	        }
-	        else    // if there is only one element in the partition, do not do any sorting
-	        {
-	                return;                     // the array is sorted, so exit
-	        }
-	}
+        if (end - start >= 1)                   // check that there are at least two elements to sort
+        {
+            int pivot = array[start];       // set the pivot as the first element in the partition
 
-	public void swap(int array[], int index1, int index2) 
-	// pre: array is full and index1, index2 < array.length
-	// post: the values at indices 1 and 2 have been swapped
-	{
-		int temp = array[index1];           // store the first value in a temp
-		array[index1] = array[index2];      // copy the value of the second into the first
-		array[index2] = temp;               // copy the value of the temp into the second
-	}
-	
-	public static void main(String[] args) {
-		QuickSort qs = new QuickSort();
-		
-	}
+            while (k > i)                   // while the scan indices from left and right have not met,
+            {
+                while (array[i] <= pivot && i <= end && k > i)  // from the left, look for the first
+                    i++;                                    // element greater than the pivot
+                while (array[k] > pivot && k >= start && k >= i) // from the right, look for the first
+                    k--;                                        // element not greater than the pivot
+                if (k > i)                                       // if the left seekindex is still smaller than
+                    swap(array, i, k);                      // the right index, swap the corresponding elements
+            }
+            swap(array, start, k);          // after the indices have crossed, swap the last element in
+            // the left partition with the pivot
+            quickSort2(array, start, k - 1); // quicksort the left partition
+            quickSort2(array, k + 1, end);   // quicksort the right partition
+        }
+        // if there is only one element in the partition, do not do any sorting
+        // the array is sorted, so exit
+    }
+
+    public void swap(int array[], int index1, int index2)
+    // pre: array is full and index1, index2 < array.length
+    // post: the values at indices 1 and 2 have been swapped
+    {
+        int temp = array[index1];           // store the first value in a temp
+        array[index1] = array[index2];      // copy the value of the second into the first
+        array[index2] = temp;               // copy the value of the temp into the second
+    }
+
+    public static void main(String[] args) {
+        QuickSort qs = new QuickSort();
+
+    }
 }

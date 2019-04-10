@@ -1,205 +1,207 @@
 package com.newthinktank.basic;
 
-//Arrays, linked lists, trees, etc. are best for
-//data that represents real objects.
-
-//Stacks & Queues are instead used to complete a 
-//task and are soon after discarded.
-
-//Stacks & Queues
-//1. Allow only a single item to be added or removed at a time
-//2. Stacks allow access to the last item inserted (LIFO)
-//3. Queues allow access to the first item inserted (FIFO)
-
 import java.util.Arrays;
+
+/**
+ * Arrays, linked lists, trees, etc. are best for
+ * data that represents real objects.
+ * <p>
+ * Stacks & Queues are instead used to complete a
+ * task and are soon after discarded.
+ * <p>
+ * Stacks & Queues
+ * 1. Allow only a single item to be added or removed at a time
+ * 2. Stacks allow access to the last item inserted (LIFO)
+ * 3. Queues allow access to the first item inserted (FIFO)
+ */
 
 public class TheStack {
 
-	private String[] stackArray;
-	private int stackSize;
+    private String[] stackArray;
+    private int stackSize;
 
-	// Sets stack as empty
-	// Last in first out
-	private int topOfStack = -1;
+    // Sets stack as empty
+    // Last in first out
+    private int topOfStack = -1;
 
-	TheStack(int size) {
+    private TheStack(int size) {
 
-		stackSize = size;
+        stackSize = size;
 
-		stackArray = new String[size];
+        stackArray = new String[size];
 
-		// Assigns the value of -1 to every value in the array
-		// so I control what gets printed to screen
+        // Assigns the value of -1 to every value in the array
+        // so I control what gets printed to screen
 
-		Arrays.fill(stackArray, "-1");
+        Arrays.fill(stackArray, "-1");
 
-	}
+    }
 
-	public void push(String input) {
+    private void push(String input) {
 
-		if (topOfStack + 1 < stackSize) {
+        if (topOfStack + 1 < stackSize) {
 
-			topOfStack++;
+            topOfStack++;
 
-			stackArray[topOfStack] = input;
+            stackArray[topOfStack] = input;
 
-		} else
-			System.out.println("Sorry But the Stack is Full");
+        } else
+            System.out.println("Sorry But the Stack is Full");
 
-		displayTheStack();
+        displayTheStack();
 
-		System.out.println("PUSH " + input + " Was Added to the Stack\n");
+        System.out.println("PUSH " + input + " Was Added to the Stack\n");
 
-	}
+    }
 
-	public String pop() {
+    private String pop() {
 
-		if (topOfStack >= 0) {
+        if (topOfStack >= 0) {
 
-			displayTheStack();
+            displayTheStack();
 
-			System.out.println("POP " + stackArray[topOfStack]
-					+ " Was Removed From the Stack\n");
+            System.out.println("POP " + stackArray[topOfStack]
+                    + " Was Removed From the Stack\n");
 
-			// Just like in memory an item isn't deleted, but instead is just
-			// not available
+            // Just like in memory an item isn't deleted, but instead is just
+            // not available
 
-			stackArray[topOfStack] = "-1"; // Assigns -1 so the value won't
-											// appear
+            stackArray[topOfStack] = "-1"; // Assigns -1 so the value won't
+            // appear
 
-			return stackArray[topOfStack--];
+            return stackArray[topOfStack--];
 
-		} else {
+        } else {
 
-			displayTheStack();
+            displayTheStack();
 
-			System.out.println("Sorry But the Stack is Empty");
+            System.out.println("Sorry But the Stack is Empty");
 
-			return "-1";
-		}
+            return "-1";
+        }
 
-	}
+    }
 
-	public String peek() {
+    public String peek() {
 
-		displayTheStack();
+        displayTheStack();
 
-		System.out.println("PEEK " + stackArray[topOfStack]
-				+ " Is at the Top of the Stack\n");
+        System.out.println("PEEK " + stackArray[topOfStack]
+                + " Is at the Top of the Stack\n");
 
-		return stackArray[topOfStack];
+        return stackArray[topOfStack];
 
-	}
-	
-	public void pushMany(String multipleValues) {
+    }
 
-		String[] tempString = multipleValues.split(" ");
+    public void pushMany(String multipleValues) {
 
-		for (int i = 0; i < tempString.length; i++) {
+        String[] tempString = multipleValues.split(" ");
 
-			push(tempString[i]);
+        for (int i = 0; i < tempString.length; i++) {
 
-		}
+            push(tempString[i]);
 
-	}
+        }
 
-	public void popAll() {
+    }
 
-		for (int i = topOfStack; i >= 0; i--) {
+    public void popAll() {
 
-			pop();
+        for (int i = topOfStack; i >= 0; i--) {
 
-		}
+            pop();
 
-	}
+        }
 
-	public void popDisplayAll() {
+    }
 
-		String theReverse = "";
+    public void popDisplayAll() {
 
-		for (int i = topOfStack; i >= 0; i--) {
+        String theReverse = "";
 
-			theReverse += stackArray[i];
+        for (int i = topOfStack; i >= 0; i--) {
 
-		}
+            theReverse += stackArray[i];
 
-		System.out.println("The Reverse: " + theReverse);
+        }
 
-		popAll();
+        System.out.println("The Reverse: " + theReverse);
 
-	}
+        popAll();
 
-	public void displayTheStack() {
+    }
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+    public void displayTheStack() {
 
-		System.out.println();
+        for (int n = 0; n < 61; n++)
+            System.out.print("-");
 
-		for (int n = 0; n < stackSize; n++) {
+        System.out.println();
 
-			System.out.format("| %2s " + " ", n);
+        for (int n = 0; n < stackSize; n++) {
 
-		}
+            System.out.format("| %2s " + " ", n);
 
-		System.out.println("|");
+        }
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+        System.out.println("|");
 
-		System.out.println();
+        for (int n = 0; n < 61; n++)
+            System.out.print("-");
 
-		for (int n = 0; n < stackSize; n++) {
+        System.out.println();
 
-			if (stackArray[n].equals("-1"))
-				System.out.print("|     ");
+        for (int n = 0; n < stackSize; n++) {
 
-			else
-				System.out.print(String.format("| %2s " + " ", stackArray[n]));
+            if (stackArray[n].equals("-1"))
+                System.out.print("|     ");
 
-		}
+            else
+                System.out.print(String.format("| %2s " + " ", stackArray[n]));
 
-		System.out.println("|");
+        }
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+        System.out.println("|");
 
-		System.out.println();
+        for (int n = 0; n < 61; n++)
+            System.out.print("-");
 
-	}
+        System.out.println();
 
-	public static void main(String[] args) {
+    }
 
-		TheStack theStack = new TheStack(10);
+    public static void main(String[] args) {
 
-		theStack.push("10");
-		theStack.push("17");
-		theStack.push("13");
+        TheStack theStack = new TheStack(10);
 
-		// Look at the top value on the stack
+        theStack.push("10");
+        theStack.push("17");
+        theStack.push("13");
 
-		theStack.peek();
+        // Look at the top value on the stack
 
-		// Remove values from the stack (LIFO)
+        theStack.peek();
 
-		theStack.pop();
-		theStack.pop();
-		theStack.pop();
+        // Remove values from the stack (LIFO)
 
-		// Add many to the stack
+        theStack.pop();
+        theStack.pop();
+        theStack.pop();
 
-		theStack.pushMany("R E D R U M");
+        // Add many to the stack
 
-		// Remove all from the stack
+        theStack.pushMany("R E D R U M");
 
-		// theStack.popAll();
+        // Remove all from the stack
 
-		// Remove all from the stack and print them
+        // theStack.popAll();
 
-		theStack.popDisplayAll();
+        // Remove all from the stack and print them
 
-		theStack.displayTheStack();
+        theStack.popDisplayAll();
 
-	}
+        theStack.displayTheStack();
+
+    }
 
 }

@@ -11,8 +11,8 @@ public class DemoOfFormat {
 		f.format("%-15s %5s %10s\n", "----", "---", "-----");
 	}
 
-	public void print(String name, int qty, double price) {
-		f.format("%-15.15s %5d %10.2f\n", name, qty, price);
+	public void print(String name, int quantity, double price) {
+		f.format("%-15.15s %5d %10.2f\n", name, quantity, price);
 		total += price;
 	}
 
@@ -25,7 +25,7 @@ public class DemoOfFormat {
 	public static void main(String[] args) {
 		DemoOfFormat receipt = new DemoOfFormat();
 		receipt.printTitle();
-		receipt.print("Jack¡¯s Magic Beans", 4, 4.25);
+		receipt.print("Jacks Magic Beans", 4, 4.25);
 		receipt.print("Princess Peas", 3, 5.1);
 		receipt.print("Three Bears Porridge", 1, 14.29);
 		receipt.printTotal();

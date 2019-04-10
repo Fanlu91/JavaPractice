@@ -1,139 +1,55 @@
 package com.fanlu.sorting;
+
 import java.util.Calendar;
 
 public class InternalSorting {
-	
-	public static void main(String[] args){
-		
-		int len=1000000;
-//		int len=8;
-		int []arr=new int [len];
-		for (int i=0;i<len;i++){
-			//ÈÃ³ÌĞòËæ»ú²úÉú1-10000µÄÊı
-			//Math.random()»áËæ»ú²úÉúÒ»¸ö0~1µÄÊı
-			arr[i]=(int)(Math.random()*10000);
-		}
-		
-//		int arr1[]={1,6,0,-1,9,11,99,88,77,66,55,44,33,22,13,4};
-		
-//		Bubble bubble=new Bubble();
-//		//ÔÚÅÅĞòÇ°´òÓ¡ÏµÍ³Ê±¼ä
-//		Calendar cal=Calendar.getInstance();
-//		System.out.println("¿ªÊ¼ÅÅĞò"+cal.getTime());
-//		bubble.sort(arr);
-//		//ÔÚÅÅĞòºó´òÓ¡ÏµÍ³Ê±¼ä
-//		Calendar cal2=Calendar.getInstance();//ÖØĞÂµÃµ½ÊµÀı
-//		System.out.println("ÅÅĞòÍê³É"+cal2.getTime());
-		
-//		Select select=new Select();
-//		//ÔÚÅÅĞòÇ°´òÓ¡ÏµÍ³Ê±¼ä
-//		Calendar cal=Calendar.getInstance();
-//		System.out.println("¿ªÊ¼ÅÅĞò"+cal.getTime());
-//		select.sort(arr);
-//		//ÔÚÅÅĞòºó´òÓ¡ÏµÍ³Ê±¼ä
-//		Calendar cal2=Calendar.getInstance();//ÖØĞÂµÃµ½ÊµÀı
-//		System.out.println("ÅÅĞòÍê³É"+cal2.getTime());
-	
-//		Insert insert=new Insert();
-//		//ÔÚÅÅĞòÇ°´òÓ¡ÏµÍ³Ê±¼ä
-//		Calendar cal=Calendar.getInstance();
-//		System.out.println("¿ªÊ¼ÅÅĞò"+cal.getTime());
-//		insert.sort(arr);
-//		//ÔÚÅÅĞòºó´òÓ¡ÏµÍ³Ê±¼ä
-//		Calendar cal2=Calendar.getInstance();//ÖØĞÂµÃµ½ÊµÀı
-//		System.out.println("ÅÅĞòÍê³É"+cal2.getTime());
-		
-		QuickSort qs=new QuickSort();
-		//ÔÚÅÅĞòÇ°´òÓ¡ÏµÍ³Ê±¼ä
-		Calendar cal=Calendar.getInstance();
-		System.out.println("¿ªÊ¼ÅÅĞò"+cal.getTime());
-		qs.sort(0,arr.length-1,arr);
-		//ÔÚÅÅĞòºó´òÓ¡ÏµÍ³Ê±¼ä
-		Calendar cal2=Calendar.getInstance();//ÖØĞÂµÃµ½ÊµÀı
-		System.out.println("ÅÅĞòÍê³É"+cal2.getTime());
-		
-//		//Êä³ö×îºó½á¹û
-//		for(int i=0;i<arr.length;i++){
-//			System.out.print(arr[i]+" ");
-//		}
-	}
-}
 
-/**
- * Ã°ÅİÅÅĞòµÄ»ù±¾Ë¼ÏëÊÇ£ºÍ¨¹ı¶Ô´ıÅÅĞòĞòÁĞ´ÓºóÏòÇ°£¨´ÓÏÂ±í½Ï´óµÄÔªËØ¿ªÊ¼£©£¬
- * ÒÀ´Î±È½ÏÏàÁÚÔªËØµÄÅÅĞòÂë£¬Èô·¢ÏÖÄæĞòÔò½»»»£¬
- * Ê¹ÅÅĞòÂë½ÏĞ¡µÄÔªËØÖğ½¥´Óºó²¿ÒÆÏòÇ°²¿£¨´ÓÏÂ±í½Ï´óµÄµ¥ÔªÒÆÏòÏÂ±ê½ÏĞ¡µÄµ¥Ôª£©
- * ¾ÍÏñË®µ×ÏÂµÄÆøÅİÒ»ÑùÖğ½¥ÏòÉÏÃ°¡£
- * 
- * ÒòÎªÅÅĞòµÄ¹ı³ÌÖĞ£¬ÔªËØ²»¶Ï½Ó½ü×Ô¼ºµÄÎ»ÖÃ£¬
- * Èç¹ûÒ»ÌË±È½ÏÏÂÀ´Ã»ÓĞ½øĞĞ¹ı½»»»£¬¾ÍËµÃ÷ĞòÁĞÓĞĞò£¬¡¢
- * Òò´ËÒªÔÚÅÅĞò¹ı³ÌÖĞÉèÖÃÒ»¸ö±êÖ¾flagÅĞ¶ÏÔªËØÊÇ·ñ½øĞĞ¹ı½»»»£¬
- * ´Ó¶ø¼õÉÙ²»±ØÒªµÄ±È½Ï
- */
-class Bubble{
-	public void sort(int arr[]){
-		int temp=0;
-		//ÅÅĞò
-		//Íâ²ãÑ­»·£¬Ëü¿ÉÒÔ¾ö¶¨Ò»¹²×ß¼¸ÌË
-		for(int i=1;i<arr.length-1;i++ ){
-			//ÄÚ²ãÑ­»·£¬¿ªÊ¼×·¸ö±È½Ï
-			//·¢ÏÖÇ°Ò»¸öÊı±ÈºóÒ»¸öÊı´ó£¬Ôò½»»»
-			//×¢ÒâÏÂÃæµÄ-i Ã¿´Î±È½ÏÖ®ºó ×î´óµÄ¶¼ÔÚÄ©Î² ËùÒÔ¿ÉÒÔÉÙ±È½ÏÒ»¸ö
-			for(int j=0;j<arr.length-i;j++){
-				if(arr[j]>arr[j+1]){
-					//»»Î»
-					temp=arr[j];
-					arr[j]=arr[j+1];
-					arr[j+1]=temp;
-				}
-			}
-		}
+    public static void main(String[] args) {
 
-	}
-	
-}
+        int len = 1000000;
+// 		int len=8;
+        int[] arr = new int[len];
+        for (int i = 0; i < len; i++) {
+            //è®©ç¨‹åºéšæœºäº§ç”Ÿ1-10000çš„æ•°
+            // Math.random()ä¼šéšæœºäº§ç”Ÿä¸€ä¸ª0~1çš„æ•°
+            arr[i] = (int) (Math.random() * 10000);
+        }
 
-/***
- * Ñ¡ÔñÅÅĞò·¨
- * Ñ¡ÔñÅÅĞò·¨Ò²ÊôÓÚÄÚ²¿ÅÅĞò·¨£¬
- * ÊÇ´ÓÓûÅÅĞòµÄÊı¾İÖĞ£¬°´Ö¸¶¨µÄ¹æÔòÑ¡³öÄ³Ò»ÔªËØ£¬
- * ¾­¹ıºÍÆäËûÔªËØÖØÕû£¬ÔÙÒÀÔ­Ôò½»»»Î»ÖÃºó´ïµ½ÅÅĞòµÄÄ¿µÄ
- * 
- * Ñ¡ÔñÅÅĞòÓÖ·ÖÁ½ÖÖ
- * 1.Ñ¡ÔñÅÅĞò·¨£¨Selection Sort£©
- * 2.¶ÑÅÅĞò·¨£¨Heap Sort£©
- * 
- * Ñ¡ÔñÅÅĞò£¨Select sorting£©Ò²ÊÇÒ»ÖÖ¼òµ¥µÄÅÅĞò·½·¨¡£ËüµÄ»ù±¾Ë¼ÏëÊÇ£º
- * µÚÒ»´Î´ÓR[0]--R[n-1]ÖĞÑ¡³ö×îĞ¡Öµ£¬ÓëR[0]½»»»
- * µÚ¶ş´Î´ÓR[1]--R[n-1]ÖĞÑ¡³ö×îĞ¡Öµ£¬ÓëR[1]½»»»
- * µÚÈı´Î´ÓR[2]--R[n-1]ÖĞÑ¡³ö×îĞ¡Öµ£¬ÓëR[2]½»»»
- * µÚi ´Î´ÓR[i-1]--R[n-1]ÖĞÑ¡³ö×îĞ¡Öµ£¬ÓëR[i-1]½»»»
- * µÚn-1´Î´ÓR[n-2]--R[n-1]ÖĞÑ¡³ö×îĞ¡Öµ£¬ÓëR[n-2]½»»»
- * ×Ü¹²Í¨¹ın-1´Î£¬µÃµ½Ò»¸ö°´ÅÅĞòÂë´ÓĞ¡µ½´óÅÅÁĞµÄÓĞĞòĞòÁĞ
- * 
- */
+// 		int arr1[]={1,6,0,-1,9,11,99,88,77,66,55,44,33,22,13,4};
 
-class Select{
-	public void sort(int arr[]){
-		int temp=0;
-		//ÎÒÈÏÎªµÚÒ»¸öÊı¾ÍÊÇ×îĞ¡
-		for(int j=1;j<arr.length-1;j++){
+// 		Bubble bubble=new Bubble();
+// 		//åœ¨æ’åºå‰æ‰“å°ç³»ç»Ÿæ—¶é—´
+// 		Calendar cal=Calendar.getInstance();
+// 		System.out.println("å¼€å§‹æ’åº"+cal.getTime());
+// 		bubble.sort(arr);
+// 		//åœ¨æ’åºåæ‰“å°ç³»ç»Ÿæ—¶é—´
+// 		Calendar cal2=Calendar.getInstance();//é‡æ–°å¾—åˆ°å®ä¾‹
+// 		System.out.println("æ’åºå®Œæˆ"+cal2.getTime());
+// 		Select select=new Select();
+// 		//åœ¨æ’åºå‰æ‰“å°ç³»ç»Ÿæ—¶é—´
+// 		Calendar cal=Calendar.getInstance();
+// 		System.out.println("å¼€å§‹æ’åº"+cal.getTime());
+// 		select.sort(arr);
+// 		//åœ¨æ’åºåæ‰“å°ç³»ç»Ÿæ—¶é—´
+// 		Calendar cal2=Calendar.getInstance();//é‡æ–°å¾—åˆ°å®ä¾‹
+// 		System.out.println("æ’åºå®Œæˆ"+cal2.getTime());
+// 		Insert insert=new Insert();
+// 		//åœ¨æ’åºå‰æ‰“å°ç³»ç»Ÿæ—¶é—´
+// 		Calendar cal=Calendar.getInstance();
+// 		System.out.println("å¼€å§‹æ’åº"+cal.getTime());
+// 		insert.sort(arr);
+// 		//åœ¨æ’åºåæ‰“å°ç³»ç»Ÿæ—¶é—´
+// 		Calendar cal2=Calendar.getInstance();//é‡æ–°å¾—åˆ°å®ä¾‹
+// 		System.out.println("æ’åºå®Œæˆ"+cal2.getTime());
 
-			int min=arr[j];
-			//¼ÇÂ¼×îĞ¡ÊıµÄÏÂ±ê
-			int minIndex=j;
-			
-			for(int k=j+1;k<arr.length;k++){
-				if(min>arr[k]){
-					//ĞŞ¸Ä×îĞ¡
-					min=arr[k];
-					minIndex=k;
-				}
-			}
-			//µ±ÍË³öforÑ­»·Ê±£¬¾ÍÕÒµ½±¾´Î×îĞ¡Öµ
-			temp=arr[j];
-			arr[j]=arr[minIndex];
-			arr[minIndex]=temp;
-		}
-	}
+        QuickSort qs = new QuickSort();
+        //åœ¨æ’åºå‰æ‰“å°ç³»ç»Ÿæ—¶é—´
+        Calendar cal = Calendar.getInstance();
+        System.out.println("å¼€å§‹æ’åº" + cal.getTime());
+        qs.sort(0, arr.length - 1, arr);
+        //åœ¨æ’åºåæ‰“å°ç³»ç»Ÿæ—¶é—´
+        Calendar cal2 = Calendar.getInstance(); //é‡æ–°å¾—åˆ°å®ä¾‹
+        System.out.println("æ’åºå®Œæˆ" + cal2.getTime());
+
+    }
 }
