@@ -406,7 +406,7 @@ public class Mp3Player extends JFrame implements ActionListener,
 		//create a list to return
 		ArrayList<Integer> foundList = new ArrayList<Integer>();
 		
-		//use for loop to search entire arraylist
+		//use for loop to search entire recursion
 		for (int i=0; i<arrayofsongs.size(); i++ ){
 			
 			//check if current element has id
