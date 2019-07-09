@@ -89,9 +89,9 @@ public class VendingMachineText {
 						break;
 					} else {
 						System.out
-								.println("here is your Chocolate! the toatal cost is f"
+								.println("here is your Chocolate! the toatal cost is fillBag"
 										+ v.getCost()
-										+ " and total of change left is f"
+										+ " and total of change left is fillBag"
 										+ (v.getBalance() - v.getCost()));
 						v.setA(v.getA() + 1);
 						break;

@@ -33,11 +33,11 @@ public class InternalSorting {
 // 		//在排序后打印系统时间
 // 		Calendar cal2=Calendar.getInstance();//重新得到实例
 // 		System.out.println("排序完成"+cal2.getTime());
-// 		Insert insert=new Insert();
+// 		Insert insertUsingMap=new Insert();
 // 		//在排序前打印系统时间
 // 		Calendar cal=Calendar.getInstance();
 // 		System.out.println("开始排序"+cal.getTime());
-// 		insert.sort(arr);
+// 		insertUsingMap.sort(arr);
 // 		//在排序后打印系统时间
 // 		Calendar cal2=Calendar.getInstance();//重新得到实例
 // 		System.out.println("排序完成"+cal2.getTime());

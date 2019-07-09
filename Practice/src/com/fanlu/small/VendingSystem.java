@@ -107,7 +107,7 @@ public class VendingSystem implements ActionListener {
 				vi.setI(vi.getI()+1);
 			} else {
 				this.cost -= vi.getPrice();
-				textArea.append(newline+"you need to input more coins!(press 9 to insert,any other key to stop)");
+				textArea.append(newline+"you need to input more coins!(press 9 to insertUsingMap,any other key to stop)");
 			}
 		} else {
 			textArea.append(newline+"sorry," + vi.getName() + " is sold out");

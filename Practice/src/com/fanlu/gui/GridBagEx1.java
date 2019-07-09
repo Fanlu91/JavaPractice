@@ -80,19 +80,19 @@
 //
 //	public static void main(String args[]) {
 //
-//		Frame f = new Frame("GridBag Layout Example");
+//		Frame fillBag = new Frame("GridBag Layout Example");
 //
 //		GridBagEx1 ex1 = new GridBagEx1();
 //
 //		ex1.init();
 //
-//		f.add("Center", ex1);
+//		fillBag.add("Center", ex1);
 //
-//		f.pack();
+//		fillBag.pack();
 //
-//		f.setSize(f.getPreferredSize());
+//		fillBag.setSize(fillBag.getPreferredSize());
 //
-//		f.setVisible(true);
+//		fillBag.setVisible(true);
 //
 //	}
 //

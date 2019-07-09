@@ -44,7 +44,7 @@ public class TheQueue {
 
 	}
 
-	// This priority insert will add items in order from high to low
+	// This priority insertUsingMap will add items in order from high to low
 
 	public void priorityInsert(String input) {
 
@@ -177,23 +177,23 @@ public class TheQueue {
 		theQueue.priorityInsert("10");
 
 		/*
-		 * theQueue.insert("10");
+		 * theQueue.insertUsingMap("10");
 		 * 
 		 * theQueue.displayTheQueue();
 		 * 
-		 * theQueue.insert("15");
+		 * theQueue.insertUsingMap("15");
 		 * 
 		 * theQueue.displayTheQueue();
 		 * 
-		 * theQueue.insert("25");
+		 * theQueue.insertUsingMap("25");
 		 * 
 		 * theQueue.displayTheQueue();
 		 * 
-		 * theQueue.insert("25");
+		 * theQueue.insertUsingMap("25");
 		 * 
 		 * theQueue.displayTheQueue();
 		 * 
-		 * theQueue.insert("25");
+		 * theQueue.insertUsingMap("25");
 		 */
 
 		theQueue.displayTheQueue();
